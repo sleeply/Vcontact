@@ -18,7 +18,8 @@ const routes = [
 ];
 let history = import.meta.env.SSR ? createMemoryHistory() : createWebHistory();
 
-const beforeEach = async (to: any, next: any) => {
+/* eslint-disable */
+const beforeEach = async (to: any, from: any, next: any) => {
   if (!localStorage.getItem(USER_TOKEN)) {
     if (!to.meta.freeAccess) {
       return next({ name: `Auth` });
@@ -32,9 +33,12 @@ const beforeEach = async (to: any, next: any) => {
   return next();
 };
 
-const router = createRouter({
-  history,
-  routes,
-});
-router.beforeEach(beforeEach);
-export default router;
+export default function(){
+  const router = createRouter({
+    history,
+    routes,
+  })
+  router.beforeEach(beforeEach);
+
+  return router
+}
