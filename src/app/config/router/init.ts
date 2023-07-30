@@ -38,13 +38,3 @@ const router = createRouter({
 });
 router.beforeEach(beforeEach);
 export default router;
-// export default function () {
-//   const router = createRouter({
-//     history,
-//     routes: routes,
-//   });
-
-//   router.beforeEach(beforeEach);
-
-//   return router;
-// }
