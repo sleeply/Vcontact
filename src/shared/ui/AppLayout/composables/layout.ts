@@ -1,4 +1,4 @@
-import { toRefs, reactive, computed, ref } from "vue";
+import { toRefs, reactive, computed } from "vue";
 import type { ILayoutConfig, ILayoutState } from "../types";
 
 const layoutConfig: ILayoutConfig = reactive({
@@ -10,8 +10,6 @@ const layoutConfig: ILayoutConfig = reactive({
   scale: 14,
   activeMenuItem: null,
 });
-
-const routerTransition = ref('')
 
 const layoutState: ILayoutState = reactive({
   staticMenuDesktopInactive: false,

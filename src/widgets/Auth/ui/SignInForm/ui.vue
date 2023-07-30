@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import { reactive } from "vue";
 import { useForm } from "vee-validate";
 import * as yup from "yup";
 import Button from "primevue/button";
 import FormInput from "@/shared/ui/FormInput.vue";
 import { useI18n } from "vue-i18n";
-import type { IUserModel } from "../../model/IUserModel";
 import { useUser } from "@/app/config/store/user";
 import { useNumbFormatter } from "@/shared/helpers/useNumbFormatter";
 import { useToast } from "vue-toastification";
@@ -13,18 +11,16 @@ import { useRouter } from "vue-router";
 import { useAdapter } from "@/shared/composables/useAdapter";
 import { USER_TOKEN } from "@/shared/constants";
 
-const { defineInputBinds, handleSubmit, setFieldError, isValidating } = useForm(
-  {
-    validationSchema: yup.object({
-      phoneNumber: yup.string().required(),
-      password: yup.string().required(),
-    }),
-    initialValues: {
-      phoneNumber: "+998",
-      password: "",
-    },
-  }
-);
+const { handleSubmit, setFieldError } = useForm({
+  validationSchema: yup.object({
+    phoneNumber: yup.string().required(),
+    password: yup.string().required(),
+  }),
+  initialValues: {
+    phoneNumber: "+998",
+    password: "",
+  },
+});
 
 const userStore = useUser();
 const { listener } = useNumbFormatter();
@@ -40,7 +36,7 @@ const submit = handleSubmit((values) => {
   let hasAccount = userStore.getUsers.find(
     (el) => el.phoneNumber === listener(values.phoneNumber)
   );
-console.log(hasAccount)
+  console.log(hasAccount);
   if (hasAccount) {
     if (hasAccount.password === values.password) {
       userStore.setUser(hasAccount);

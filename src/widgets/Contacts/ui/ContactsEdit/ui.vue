@@ -19,7 +19,6 @@ const toast = useToast();
 const route = useRoute();
 const router = useRouter();
 
-const isView: boolean = route.query.view ? true : false;
 const id = route.params.id ? route.params.id : null;
 
 const store = useContactStore();

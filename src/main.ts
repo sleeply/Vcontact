@@ -16,10 +16,11 @@ import "vue-toastification/dist/index.css";
 const app = createApp(App);
 const pinia = createPinia();
 
-app.use(PrimeVue);
-app.use(router);
 app.use(pinia);
 app.use(i18n);
+app.use(router);
+
+app.use(PrimeVue);
 app.use(Toast, {
   closeOnClick: false,
   timeout: 3000,

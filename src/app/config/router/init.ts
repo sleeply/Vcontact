@@ -18,7 +18,7 @@ const routes = [
 ];
 let history = import.meta.env.SSR ? createMemoryHistory() : createWebHistory();
 
-const beforeEach = async (to: any, from: any, next: any) => {
+const beforeEach = async (to: any, next: any) => {
   if (!localStorage.getItem(USER_TOKEN)) {
     if (!to.meta.freeAccess) {
       return next({ name: `Auth` });

@@ -1,6 +1,6 @@
 // @ts-check
 
-import { i18n } from "@/i18n";
+import { i18n } from "@/app/config/i18n/i18n";
 export function useFormatter() {
   const isToday = (someDate: Date) => {
     const today = new Date();

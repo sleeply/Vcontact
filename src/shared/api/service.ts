@@ -1,5 +1,5 @@
 import { BASE_URL } from "@/app/config/constants";
-import axios, { AxiosHeaders, type AxiosRequestConfig } from "axios";
+import axios, { AxiosHeaders, AxiosResponse, type AxiosRequestConfig } from "axios";
 
 const http = axios.create();
 
@@ -68,10 +68,10 @@ const ApiService = {
   },
   mount401Interceptor() {
     axios.interceptors.response.use(
-      (response) => {
+      (response:AxiosResponse) => {
         return response;
       },
-      async (error) => {
+      async (error:any) => {
         if (error.request.status == 401) {
           localStorage.clear();
           window.location.href = "/login";

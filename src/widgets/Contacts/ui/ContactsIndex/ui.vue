@@ -7,8 +7,7 @@ import Dropdown from "primevue/dropdown";
 import { reactive } from "vue";
 import { ref } from "vue";
 import type { IContact, IContactFilter } from "../../model/index";
-import { useRouter } from "vue-router";
-import type { Ii18nRoute } from "types";
+import { RouteLocationRaw, useRouter } from "vue-router";
 import { useContactStore } from "../../store/index";
 import { computed } from "vue";
 import FormTable from "@/shared/ui/FormTable.vue";
@@ -102,13 +101,10 @@ const data = computed(() => {
 const loading = ref<boolean>(false);
 
 const router = useRouter();
-const navigateToCreate = (navigate: Ii18nRoute) => {
+const navigateToCreate = (navigate: RouteLocationRaw) => {
   router.push(navigate);
 };
 
-const handleDelete = (id: number) => {
-  let newData: IContact[] = [];
-};
 </script>
 
 <template>
