@@ -1,17 +1,31 @@
 import { createApp } from "vue";
-import "./style.css";
 import App from "./App.vue";
 
 import "primeicons/primeicons.css";
 import { vMaska } from "maska";
 import PrimeVue from "primevue/config";
-import "@/app/style/global.scss";
+import Toast from "vue-toastification";
+import router from "@/app/config/router/init";
+import { i18n } from "@/app/config/i18n/i18n";
+import { createPinia } from "pinia";
 
+import "@/app/style/global.scss";
+import "primeicons/primeicons.css";
+import "vue-toastification/dist/index.css";
 
 const app = createApp(App);
+const pinia = createPinia();
+
 app.use(PrimeVue);
+app.use(router);
+app.use(pinia);
+app.use(i18n);
+app.use(Toast, {
+  closeOnClick: false,
+  timeout: 3000,
+  transition: "Vue-Toastification__fade",
+});
 
 app.directive("maska", vMaska);
 
-// createApp(App).mount("#app");
 app.mount("#app");

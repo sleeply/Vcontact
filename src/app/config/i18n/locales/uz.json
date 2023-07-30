@@ -1,0 +1,10 @@
+{
+  "signIn": "Kirish",
+  "signUp": "Ro'yxatdan o'tish",
+
+  "phoneNumber": "Telefor raqami",
+  "password": "Parol",
+  "correctFormatPhone": "To'g'ri formatda telefon raqam kiriting",
+  "userNotFound":"Foydalanuvchi topilmadi",
+  "userFound":"Foydalanuvchi bor"
+}
